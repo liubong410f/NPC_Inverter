@@ -115,12 +115,13 @@ carrier1_offset = 0.5;  % Upper carrier offset
 carrier2_amp = 0.5;     % Lower carrier amplitude
 carrier2_offset = -0.5; % Lower carrier offset
 
-%% Save all parameters to MAT file
-save('NPC_Parameters.mat');
+%% Save all parameters to MAT file (optional)
+% Uncomment the following line if you want to save parameters to a file
+% save('NPC_Parameters.mat');
 
 fprintf('========================================\n');
 fprintf('All parameters loaded successfully!\n');
-fprintf('Parameters saved to: NPC_Parameters.mat\n');
+fprintf('Ready to use in Simulink model.\n');
 fprintf('========================================\n\n');
 
 %% Display voltage levels

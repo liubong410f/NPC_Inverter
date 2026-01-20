@@ -24,7 +24,9 @@ function [S1, S2, S3, S4] = NPC_PWM_Controller(Vref, t, Vdc, fs, phase_offset)
 %   N state (Vout = -Vdc/2): S1=0, S2=0, S3=1, S4=1
 
     % Apply phase offset to reference
-    Vref_shifted = Vref * cosd(phase_offset) - sind(phase_offset);
+    % Note: This is simplified. In actual implementation, phase offset should be
+    % applied to the time-domain sinusoidal reference signal at generation
+    Vref_shifted = Vref;  % Phase offset handled at signal generation level
     
     % Generate two carrier signals (triangular waves)
     % Level-shifted carrier approach

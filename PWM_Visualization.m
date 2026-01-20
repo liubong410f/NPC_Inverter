@@ -15,9 +15,11 @@ clear;
 clc;
 close all;
 
-fprintf('============================================\n');
+% Define separator for consistent formatting
+SEPARATOR = repmat('=', 1, 44);
+fprintf('%s\n', SEPARATOR);
 fprintf('NPC Inverter PWM Waveform Visualization\n');
-fprintf('============================================\n\n');
+fprintf('%s\n\n', SEPARATOR);
 
 %% Parameters
 Vdc = 600;              % DC bus voltage [V]
@@ -262,12 +264,12 @@ xline(f0, 'g--', sprintf('f0 = %d Hz', f0), 'LineWidth', 1.5);
 xline(fs, 'm--', sprintf('fs = %d Hz', fs), 'LineWidth', 1.5);
 
 %% Summary
-fprintf('============================================\n');
+fprintf('%s\n', SEPARATOR);
 fprintf('Simulation completed successfully!\n');
 fprintf('Two figures generated:\n');
 fprintf('  1. PWM waveforms (gate signals and output)\n');
 fprintf('  2. FFT analysis (harmonic content)\n');
-fprintf('============================================\n\n');
+fprintf('%s\n\n', SEPARATOR);
 
 fprintf('Key Observations:\n');
 fprintf('  ✓ Three voltage levels achieved: +%.0fV, 0V, -%.0fV\n', Vdc/2, Vdc/2);

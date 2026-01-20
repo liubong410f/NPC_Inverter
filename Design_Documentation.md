@@ -57,9 +57,10 @@ For a single phase leg, there are three valid switching states:
 | N     | OFF| OFF| ON | ON | -Vdc/2        |
 
 **Switching Rules:**
-- S1 and S2 cannot be OFF while S3 and S4 are ON (and vice versa) - only valid transitions
-- S1 and S4 are always in opposite states
-- S2 and S3 are always in opposite states
+- S1 and S4 are always in complementary states (never both ON)
+- S2 and S3 can be both ON simultaneously (in O state)
+- Valid combinations only: (S1,S2,S3,S4) = (1,1,0,0), (0,1,1,0), or (0,0,1,1)
+- Dead-time should be implemented between S1-S2 and S3-S4 transitions
 
 ## PWM Control Strategies
 
