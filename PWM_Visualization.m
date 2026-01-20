@@ -15,8 +15,9 @@ clear;
 clc;
 close all;
 
-% Define separator for consistent formatting
-SEPARATOR = repmat('=', 1, 44);
+% Define separator length constant for consistent formatting
+SEPARATOR_LENGTH = 44;
+SEPARATOR = repmat('=', 1, SEPARATOR_LENGTH);
 fprintf('%s\n', SEPARATOR);
 fprintf('NPC Inverter PWM Waveform Visualization\n');
 fprintf('%s\n\n', SEPARATOR);

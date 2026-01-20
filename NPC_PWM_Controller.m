@@ -1,4 +1,4 @@
-function [S1, S2, S3, S4] = NPC_PWM_Controller(Vref, t, Vdc, fs, phase_offset)
+function [S1, S2, S3, S4] = NPC_PWM_Controller(Vref, t, Vdc, fs)
 % NPC_PWM_Controller - Generates gate signals for NPC inverter switches
 %
 % This function implements Level-Shifted Carrier-Based PWM for a three-level
@@ -10,7 +10,6 @@ function [S1, S2, S3, S4] = NPC_PWM_Controller(Vref, t, Vdc, fs, phase_offset)
 %   t            - Current time (seconds)
 %   Vdc          - DC bus voltage (Volts)
 %   fs           - Switching frequency (Hz)
-%   phase_offset - Phase offset in degrees (0, 120, or 240 for three-phase)
 %
 % Outputs:
 %   S1 - Gate signal for upper outer switch
@@ -22,11 +21,9 @@ function [S1, S2, S3, S4] = NPC_PWM_Controller(Vref, t, Vdc, fs, phase_offset)
 %   P state (Vout = +Vdc/2): S1=1, S2=1, S3=0, S4=0
 %   O state (Vout = 0):      S1=0, S2=1, S3=1, S4=0
 %   N state (Vout = -Vdc/2): S1=0, S2=0, S3=1, S4=1
-
-    % Apply phase offset to reference
-    % Note: This is simplified. In actual implementation, phase offset should be
-    % applied to the time-domain sinusoidal reference signal at generation
-    Vref_shifted = Vref;  % Phase offset handled at signal generation level
+%
+% Note: For three-phase systems, phase offset should be applied to the
+% reference signal when generating it, not within this function.
     
     % Generate two carrier signals (triangular waves)
     % Level-shifted carrier approach
@@ -47,7 +44,7 @@ function [S1, S2, S3, S4] = NPC_PWM_Controller(Vref, t, Vdc, fs, phase_offset)
     carrier_lower = carrier * 0.5 - 0.5; % Scale to -1 to 0
     
     % Normalize reference to -1 to +1 range
-    Vref_norm = Vref_shifted;
+    Vref_norm = Vref;
     
     % Generate switching signals using comparators
     % Upper half comparison (for S1 and S2)
@@ -173,7 +170,7 @@ function test_PWM_controller()
     S4 = zeros(size(t));
     
     for i = 1:length(t)
-        [S1(i), S2(i), S3(i), S4(i)] = NPC_PWM_Controller(v_ref(i), t(i), Vdc, fs, 0);
+        [S1(i), S2(i), S3(i), S4(i)] = NPC_PWM_Controller(v_ref(i), t(i), Vdc, fs);
     end
     
     % Calculate output voltage

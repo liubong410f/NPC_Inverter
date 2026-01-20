@@ -65,9 +65,17 @@ function NPC_Inverter_Model()
     spacing_y = 100;
     
     %% 1. DC Voltage Source
-    add_block('fl_lib/Electrical/Electrical Sources/DC Voltage Source', ...
-              [modelName '/DC_Source'], ...
-              'Position', [x_start, y_start, x_start+block_width, y_start+block_height]);
+    % Note: The exact library path may vary by MATLAB version
+    % Common paths: 'powerlib/...' or 'fl_lib/...' 
+    % If this fails, manually add DC Voltage Source from Simscape Electrical library
+    try
+        add_block('powerlib/Electrical Sources/DC Voltage Source', ...
+                  [modelName '/DC_Source'], ...
+                  'Position', [x_start, y_start, x_start+block_width, y_start+block_height]);
+    catch
+        fprintf('Note: Unable to add DC source automatically.\n');
+        fprintf('Please add DC Voltage Source manually from Simscape Electrical library.\n');
+    end
     
     %% 2. Add Reference and Description
     add_block('built-in/Note', [modelName '/Description']);

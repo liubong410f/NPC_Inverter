@@ -116,7 +116,9 @@ carrier2_amp = 0.5;     % Lower carrier amplitude
 carrier2_offset = -0.5; % Lower carrier offset
 
 %% Save all parameters to MAT file (optional)
-% Uncomment the following line if you want to save parameters to a file
+% You can save parameters to a file for later use
+% Uncomment the following line if you want to save parameters
+% Note: .gitignore allows NPC_Parameters.mat specifically
 % save('NPC_Parameters.mat');
 
 fprintf('========================================\n');
