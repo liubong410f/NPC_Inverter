@@ -1,0 +1,46 @@
+# MATLAB/Simulink Files
+*.asv
+*.slxc
+slprj/
+*.autosave
+*.r2019a
+*.r2020a
+*.r2021a
+*.r2022a
+*.r2023a
+
+# MATLAB temporary files
+*.mat
+!NPC_Parameters.mat
+
+# Simulink cache
+*.slxc
+cache/
+
+# Code generation
+codegen/
+*_ert_rtw/
+*_grt_rtw/
+
+# Build artifacts
+*.mex*
+*.o
+*.obj
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*~
+*.swp
+*.swo
+*tmp*
+temp/
+
+# Log files
+*.log
+
+# Documentation build
+html/
+latex/
